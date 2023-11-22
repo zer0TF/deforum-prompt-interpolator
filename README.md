@@ -50,3 +50,7 @@ No. Math is hard.
 ## What else does it do?
 
 Nothing right now!
+
+## Why not Parseq?
+
+Sure, if you want your brain to explode. 🤯 DePerp does only one thing. And it does it well.
