@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="container-inner">
+            <h1>DePerp</h1>
+            <p>DePerp is a prompt interpolation utility for Deforum.</p>
+            <p><a id="example">See an Example</a></p>
+            <div class="example" style="display: none;">
+                <div class="two-col">
+                    <div class="col c33">
+                        <h2>Input</h2>
+                        <textarea readonly>{
+  "0": "a clown fish",
+  "10": "a basketball"
+}
+                        </textarea>
+                    </div>
+                    <div class="col c66">
+                        <h2>Output</h2>
+                        <textarea readonly>{
+  "0": "a clown fish",  
+  "1": "(a clown fish:0.9) AND (a basketball:0.1)",
+  "2": "(a clown fish:0.8) AND (a basketball:0.2)",
+  "3": "(a clown fish:0.7) AND (a basketball:0.3)",
+  "4": "(a clown fish:0.6) AND (a basketball:0.4)",
+  "5": "(a clown fish:0.5) AND (a basketball:0.5)",
+  "6": "(a clown fish:0.4) AND (a basketball:0.6)",
+  "7": "(a clown fish:0.3) AND (a basketball:0.7)",
+  "8": "(a clown fish:0.2) AND (a basketball:0.8)",
+  "9": "(a clown fish:0.1) AND (a basketball:0.9)",
+  "10": "a basketball"
+}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <h2>Input</h2>
+                <textarea id="input" placeholder="{
+  &quot;0&quot;: &quot;prompt&quot;,
+  ...
+}"></textarea>
+            </div>
+            <p></p>
+            <div class="container">
+                <h2>Output</h2>
+                <textarea id="output" readonly></textarea>
+                <button id="copy">Copy to Clipboard</button>
+            </div>
+
+            <footer>
+                An <a href="https://github.com/zer0TF/deforum-prompt-interpolator" target="_blank">open-source</a>
+                project made
+                by <a href="https://github.com/zer0TF" target="_blank">zer0TF</a>.
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
