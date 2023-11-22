@@ -60,7 +60,35 @@ function interpolate(input) {
                     var percent1 = distToKey1 / totalDist;
                     var percent2 = distToKey2 / totalDist;
 
-                    var value = `(${value1}:${flf(percent1)}) AND (${value2}:${flf(percent2)})`
+                    // If value1 contains --neg, split it into two values
+                    if (value1.includes('--neg')) {
+                        var value1Split = value1.split('--neg');
+                        value1p = value1Split[0].trim();
+                        value1n = value1Split[1].trim();
+                    }
+
+                    // If value2 contains --neg, split it into two values
+                    if (value2.includes('--neg')) {
+                        var value2Split = value2.split('--neg');
+                        value2p = value2Split[0].trim();
+                        value2n = value2Split[1].trim();
+                    }
+
+                    // Set the value depending on if we have negatives in either, both, or neither
+                    if (value1.includes('--neg') && value2.includes('--neg')) {
+                        var value = `(${value1p}:${flf(percent2)}) AND (${value2p}:${flf(percent1)}) --neg (${value1n}:${flf(percent2)}) AND (${value2n}:${flf(percent1)})`; 
+                    }
+                    else if (value1.includes('--neg')) {
+                        var value = `(${value1p}:${flf(percent2)}) AND (${value2}:${flf(percent1)}) --neg (${value1n}:${flf(percent2)})`; 
+                    }
+                    else if (value2.includes('--neg')) {
+                        var value = `(${value1}:${flf(percent2)}) AND (${value2p}:${flf(percent1)}) --neg ((${value2n}:${flf(percent1)})`; 
+                    }
+                    else {
+                        var value = `(${value1}:${flf(percent2)}) AND (${value2}:${flf(percent1)})`;
+                    }
+
+                    
 
                     input[(Number(key1) + j).toString()] = value;
                 }
